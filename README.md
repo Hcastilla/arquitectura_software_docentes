@@ -1,2 +1,1 @@
-# Simple mvc in php
-- ORM: https://medoo.in/
+# Trabajo Arquitectura del software, modulo docente
