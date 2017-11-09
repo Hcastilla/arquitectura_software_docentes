@@ -2,17 +2,24 @@
 
 namespace Modules;
 
-
+$vars = array();
 $functions = array(
 	'resource' => function($file) 
 	{
-		$path = VIEWS.$file;
+		$path = VIEWS.$file.'.php';
 		if(file_exists($path))
 		{
-			require($path);
+			extract($GLOBALS['vars']);
+			ob_start();
+			include($path);
+			echo ob_get_clean();
 		}else{
 			throw new \Exception('Archino no encontrado '.$path.$file);
 		}
+	},
+	'var' => function($key, $val)
+	{
+		$GLOBALS['vars'][$key] = $val;
 	}
 );
 

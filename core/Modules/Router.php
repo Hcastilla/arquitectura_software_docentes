@@ -4,18 +4,22 @@ namespace Modules;
 use Modules\Route;
 
 class Router{
-
 	private $url;
 	static $routes = ['get'=>[], 'post'=>[]];
 
 	public function __construct(){
-		$this->url = trim(strtolower($_SERVER['REQUEST_URI']), '/');
+		if(isset($_SERVER['QUERY_STRING'])){
+			$this->url = trim(strtolower($_SERVER['QUERY_STRING']), '/');
+		}else{
+			$this->url = trim(strtolower($_SERVER['REQUEST_URI']), '/');
+		}
 		$this->matches();
 	}
 	
 	public function matches(){
 		$method = strtolower($_SERVER['REQUEST_METHOD']);
 		if($this->validMethod($method)){
+			
 			$match = false;
 			foreach (Router::$routes[$method] as $route) {
 				if($route->match($this->url)){
