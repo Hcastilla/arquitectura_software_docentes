@@ -8,11 +8,12 @@ use Modules\Helpers\Redirect;
 class HomeController{
 	
 	public function index(){
-		session_start();
-
 		if(!isset($_SESSION['user']) || is_null($_SESSION['user']))
 		{
 			Redirect::route('/login');
+		}else
+		{
+			View::render('docente/home');
 		}
 	}
 

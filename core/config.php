@@ -12,3 +12,6 @@ require CORE.'Handler.php';
 require CORE.'Autoload.php';
 require APP.'Routes/Rutas.php';
 require CORE.'database.php';
+
+/* SESSION */
+session_start();

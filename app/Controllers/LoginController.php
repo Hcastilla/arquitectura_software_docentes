@@ -13,8 +13,21 @@ class LoginController
   }
 
   public function login()
-  {
+  { 
     $user = new User();
-    var_dump($user->select("*"));
+    $user = $user->select("*", $_POST['user']);
+    if(!empty($user) && !is_null($user))
+    {
+      $_SESSION['user'] = $user;
+      Redirect::route('/');
+    }else{
+      Redirect::route('/login');
+    }
+  } 
+
+  public function logout()
+  {
+    $_SESSION['user'] = null;
+    Redirect::route('/');
   }
 }

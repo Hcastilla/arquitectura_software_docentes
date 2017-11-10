@@ -30,7 +30,22 @@ module.exports = {
 						fallback:"style-loader"
 					}
 				)
+			},
+			{
+				test:/\.js$/,
+				use:['babel-loader'],
+				exclude:/node_modules/
+			},
+			{
+				test:/\.vue$/,
+				use:['vue-loader'],
+				exclude:/node_modules/
 			}
 		]
-	}
+	},
+	resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  }
 }

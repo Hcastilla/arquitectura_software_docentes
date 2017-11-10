@@ -1,0 +1,120 @@
+* {
+    font-family: 'Lobster', cursive;
+}
+
+body {
+    background-color: #DAEBF2;
+}
+
+h5 {
+    font-family: 'Pacifico', cursive;
+}
+
+p,
+strong {
+    text-align: justify;
+}
+
+h5.lobster,
+h4.lobster,
+a.lobster,
+td.lobster {
+    color: #012C40;
+    font-weight: bold;
+}
+
+.c-white {
+    color: white;
+}
+
+.layout {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.layout>.s6,
+.layout>.s12 {
+    padding: 35px;
+}
+
+.back-color {
+    background-color: #012C40;
+}
+
+.red {
+    background-color: #FF404C;
+}
+
+.blue-ligth,
+.blue-ligth:hover {
+    background-color: #1CA5B8;
+}
+
+.c_blue-ligth {
+    color: #1CA5B8;
+}
+
+.gray-ligth {
+    background-color: #DAEBF2;
+}
+
+.modal {
+    max-height: 95%;
+}
+
+.reply {
+    padding: 60px 6% 0 0;
+}
+
+.print {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 40px 6%;
+}
+
+nav .button-collapse {
+    margin: 0;
+}
+
+.perfil,
+td>img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.perfil {
+    position: relative;
+    top: 12px;
+}
+
+.clickeable {
+    cursor: pointer;
+}
+
+.clickeable:hover {
+    background-color: #DAEBF2;
+}
+
+.modal.bottom-sheet {
+    max-height: 70%;
+}
+
+@media only screen and (min-width: 993px) {
+    nav a.button-collapse {
+        display: inherit;
+    }
+}
+
+@media only screen and (max-width: 601px) {
+    .layout>.s6,
+    .layout>.s12 {
+        padding: 10px;
+    }
+}

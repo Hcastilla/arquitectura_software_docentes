@@ -3,29 +3,34 @@
 	$resource('/includes/head');
 ?>
 
-<body class="teal">
-	<div class="container" id="login">
-		<div class="row">
-			<div class="col m6 s10 l4 offset-s1 offset-m3 offset-l4">
-				<div class="card-panel">
-					<div class="row">
-						<form action="/login" method="post">
-							<div class="col s12">
-								<input type="text" placeholder="Usuario" name="user[usuario]" required>
+<div class="section container" style="margin-top: 8%;">
+	<div class="row">
+			<div class="col s12 m6 offset-m3">
+					<div class="card login-wrapper">
+							<div class="card-content">
+									<form method="post" action="/login">
+											<h4 class="center lobster">Login</h4>
+
+											<div class="input-field">
+													<label for="CustomerEmail">Usuario o email</label>
+													<input type="text" autofocus="" name="user[usuario]" required>
+											</div>
+
+											<div class="input-field">
+													<label for="CustomerPassword">Contraseña</label>
+													<input type="password" name="user[password]" required>
+											</div>
+
+											<input type="submit" class="btn-large col s12 blue-ligth" style="margin-bottom: 15px;" value="Iniciar sesión">
+
+											<a href="#recover" onclick="Materialize.toast('Se ha enviado la contraseña a tu correo', 3000)" class="lobster">¿Has olvidado tu contraseña?</a>
+
+									</form>
 							</div>
-							<div class="col s12">
-								<input type="password" placeholder="Password" name="user[password]" required>
-							</div>
-							<div class="col s12 center">
-								<input type="submit" class="btn" value="Ingresar">
-							</div>
-						</form>
 					</div>
-				</div>
 			</div>
-		</div>
 	</div>
-</body>
+</div>
 
 <?php $resource('/includes/scripts'); ?>
 
