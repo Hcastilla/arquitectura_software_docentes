@@ -8,7 +8,12 @@ use Modules\Helpers\Redirect;
 class HomeController{
 	
 	public function index(){
-		View::render('auth/login', ['title'=>'login']);
+		session_start();
+
+		if(!isset($_SESSION['user']) || is_null($_SESSION['user']))
+		{
+			Redirect::route('/login');
+		}
 	}
 
 	public function crear($nombre, $apellido){

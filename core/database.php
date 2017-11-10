@@ -36,8 +36,8 @@
 
 	$DB_CONFIG = [
 		'database_type' => 'mysql',
-		'database_name' => 'prueba',
+		'database_name' => 'colegio',
 		'server' => 'localhost',
 		'username' => 'root',
-		'password' => '123456',
+		'password' => '',
 	];
