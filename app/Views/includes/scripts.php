@@ -1,3 +1,3 @@
 	</body>
 </html>
-<script src="http://localhost:7000/app.js"></script>
+<script src="js/app.js"></script>

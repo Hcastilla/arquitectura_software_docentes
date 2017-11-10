@@ -2,9 +2,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
-	filename:  (getPath) => {
-		return getPath('css/app.css').replace('css/js', 'css');
-	},
+	filename: '../css/app.css',
+	allChunks:true
 });
 
 module.exports = {
@@ -19,8 +18,6 @@ module.exports = {
 		hot: true,
 	},
 	plugins:[
-		new webpack.NamedModulesPlugin(),
-		new webpack.HotModuleReplacementPlugin(),
 		extractSass
 	],
 	module:{
@@ -29,15 +26,7 @@ module.exports = {
 				test:/\.sass$/,
 				use: extractSass.extract(
 					{
-						use:
-						[
-							{
-								loader:"css-loader"
-							},
-							{
-								loader:"sass-loader"
-							}
-						],
+						use:['css-loader', 'sass-loader'],
 						fallback:"style-loader"
 					}
 				)
