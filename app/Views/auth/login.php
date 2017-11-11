@@ -13,7 +13,7 @@
 
 											<div class="input-field">
 													<label for="CustomerEmail">Usuario o email</label>
-													<input type="text" autofocus="" name="user[usuario]" required>
+													<input type="text" autofocus="" name="user[password]" required>
 											</div>
 
 											<div class="input-field">

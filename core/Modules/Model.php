@@ -6,7 +6,7 @@ use Modules\Medoo;
 class Model extends Medoo {
 
 	protected $table = null;
-
+	public $instace;
 	public function __construct(){
 		if(is_null($this->table) || empty(trim(" ", $this->table))){
 				throw new \Exception('Es necesario el atributo protected $table');
@@ -14,6 +14,7 @@ class Model extends Medoo {
 		parent::__construct($GLOBALS['DB_CONFIG']);
 	}
 
+	
 	public function select($join, $columns = null, $where = null, $table=null){
 		$table = $this->table;
 		return parent::select($table, $join, $columns, $where);
@@ -72,5 +73,20 @@ class Model extends Medoo {
 	public function sum($join, $column = null, $where = null, $table=null){
 		$table = $this->table;
 		return parent::sum($table, $join, $column, $where);
+	}
+
+	public function query($query, $map=null, $table=null)
+	{
+		return parent::query($query);
+	}
+
+	public function getError()
+	{
+		return parent::error();
+	}
+
+	public function instance()
+	{
+		return $this->instance;
 	}
 }

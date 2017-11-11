@@ -2,6 +2,7 @@
   $var('title', 'Docente');
   $resource('/includes/head'); 
 ?>
+<div id="homeDocente">
 <header class="row">
 <nav class="back-color">
     <div class="nav-wrapper container">
@@ -32,11 +33,11 @@
                     </li>
                     <li><a class="subheader"><i class="material-icons">settings</i>Configuración</a></li>
                     <li><a href="#change_pass" class="modal-trigger">Cambiar contraseña</a></li>
-                    <li><a href="login.html">Salir</a></li>
+                    <li><a href="/logout">Salir</a></li>
                 </ul>
                 <a href="#" data-activates="slide-out" class="button-collapse">
                     <img src="img/johan.jpg" class="responsive-img perfil" alt="foto de perfil">
-                    <span>{{msg}}</span>
+                    <span><?php echo $_SESSION['user']['primerNombre']." ".$_SESSION['user']['primerApellido'];?></span>
                 </a>
             </li>
         </ul>
@@ -45,19 +46,29 @@
 </header>
 <div class="container">
 <div class="row layout">
-    <div class="col s6 m4 center">
-        <a href="#" class="btn btn-floating btn-large pulse blue-ligth" onclick="Materialize.toast('Clase iniciada', 2000)">
+
+    <div class="col s6 m4 center" id="listado">
+        <a href="#" class="btn btn-floating btn-large blue-ligth">
+            <i class="material-icons">list</i>
+        </a>
+        <h5 class="flow-text">Listado de clases</h5>
+    </div>
+
+    <div class="col s6 m4 center" v-if="clase != null &&  claseActive == false">
+        <a href="#" class="btn btn-floating btn-large pulse blue-ligth" 
+        v-on:click="iniciarClase()">
             <i class="material-icons">play_arrow</i>
         </a>
         <h5 class="flow-text">Iniciar la clase</h5>
     </div>
-    <div class="col s6 m4 center">
-        <a href="#" class="btn btn-floating btn-large red" onclick="Materialize.toast('Clase terminada', 2000)">
+    <div class="col s6 m4 center" v-if="clase != null && claseActive == true">
+        <a href="#" class="btn btn-floating btn-large red" 
+            v-on:click="terminarClase()">
             <i class="material-icons">stop</i>
         </a>
         <h5 class="flow-text">Terminar clase</h5>
     </div>
-    <div class="col s6 m4 center">
+    <div class="col s6 m4 center" v-if="clase != null">
         <a href="#" class="btn btn-floating btn-large red" onclick="Materialize.toast('Se ha cancelado la clase', 2000)">
             <i class="material-icons">close</i>
         </a>
@@ -99,7 +110,7 @@
         </a>
         <h5 class="flow-text">Mi horario</h5>
     </div>
-    <div class="col s6 m12 center">
+    <div class="col s6 m4 center">
         <a href="cursos.html" class="btn btn-floating btn-large blue-ligth">
             <i class="material-icons">visibility</i>
         </a>
@@ -212,7 +223,7 @@
         </table>
     </div>
 </div>
-<div id="modal3" class="modal bottom-sheet">
+<div id="modal3" class="modal">
     <div class="modal-content center">
         <table class="responsive-table centered bordered">
             <thead class="blue-ligth">
@@ -224,29 +235,16 @@
             </thead>
 
             <tbody>
-                <tr class="clickeable">
-                    <td class="lobster">P.O.O</td>
-                    <td>Grupo1</td>
-                    <td class="c_blue-ligth">Lunes de 6 a 8</td>
-                </tr>
-                <tr class="clickeable">
-                    <td class="lobster">P.O.O</td>
-                    <td>Grupo2</td>
-                    <td class="c_blue-ligth">Lunes de 8 a 10</td>
-                </tr>
-                <tr class="clickeable">
-                    <td class="lobster">Programación 1</td>
-                    <td>Grupo 3</td>
-                    <td class="c_blue-ligth">Martes de 8 a 10</td>
-                </tr>
-                <tr class="clickeable">
-                    <td class="lobster">Arquitectura del software</td>
-                    <td>Grupo 2</td>
-                    <td class="c_blue-ligth">Viernes de 8 a 10</td>
+                <tr class="clickeable" v-for="(clase, i) in clases" 
+                    v-on:click="setClase(clase, i)">
+                    <td class="lobster">{{clase.asignatura.nombre}}</td>
+                    <td>{{clase.grupo.nombre}}</td>
+                    <td class="c_blue-ligth">---</td>
                 </tr>
             </tbody>
         </table>
     </div>
+</div>
 </div>
 
 <?php $resource('/includes/scripts'); ?>

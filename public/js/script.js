@@ -6,10 +6,12 @@ $(document).ready(function () {
     $('#change_pass').modal();
     $('#registry_class').modal();
     $('#excusa').modal();
+
     $('#modal3').modal({
-        dismissible: false
+        dismissible: true
     });
-    $('#modal3').ready(function () {
+    
+    $("#listado").on('click', () => {
         $('#modal3').modal('open');
     });
     $('.clickeable').click(function () {

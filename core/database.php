@@ -40,4 +40,5 @@
 		'server' => 'localhost',
 		'username' => 'root',
 		'password' => '',
+		'charset' => 'utf8',
 	];

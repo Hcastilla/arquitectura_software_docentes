@@ -15,7 +15,7 @@ class LoginController
   public function login()
   { 
     $user = new User();
-    $user = $user->select("*", $_POST['user']);
+    $user = $user->get("*", $_POST['user']);
     if(!empty($user) && !is_null($user))
     {
       $_SESSION['user'] = $user;
